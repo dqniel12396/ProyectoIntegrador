@@ -5,6 +5,8 @@ import dh.backend.clinicamvc.entity.Odontologo;
 import dh.backend.clinicamvc.exception.ResourceNotFoundException;
 import dh.backend.clinicamvc.repository.IOdontologoRepository;
 
+import dh.backend.clinicamvc.services.IOdontologoService;
+
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,19 +25,23 @@ public class OdontologoService implements IOdontologoService {
         return odontologoRepository.save(odontologo);
     }
 
-    public Optional<Odontologo> buscarUnOdontologo(Integer id){
+
+    public Optional<Odontologo> buscarUnOdontologo(int id) {
         return odontologoRepository.findById(id);
     }
+
+
+
     public List<Odontologo> buscarTodosOdontologos(){
         return odontologoRepository.findAll();
     }
 
-
+    @Override
     public void modificarOdontologo(Odontologo odontologo) {
         odontologoRepository.save(odontologo);
     }
 
-
+    @Override
     public void eliminarOdontologo(Integer id) throws ResourceNotFoundException {
         Optional<Odontologo> odontologoOptional = buscarUnOdontologo(id);
         if(odontologoOptional.isPresent())
@@ -44,4 +50,7 @@ public class OdontologoService implements IOdontologoService {
     }
 
 
-}
+    }
+
+
+

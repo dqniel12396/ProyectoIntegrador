@@ -26,4 +26,5 @@ public class Odontologo {
     @JsonIgnore
     private Set<Turno> turnoSet = new HashSet<>();
 
+
 }
